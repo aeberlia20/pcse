@@ -604,9 +604,9 @@ class Lintul3(SimulationObject):
         NUPTR   = (max(0., min(NDEMTO, s.TNSOIL))* NLIMIT ) / DELT
 
         # N translocated from leaves, stem, and roots.
-        RNTLV   = RNSO* ATNLV/ ATN if (ATN > 0.0) else 0.0
-        RNTST   = RNSO* ATNST/ ATN if (ATN > 0.0) else 0.0
-        RNTRT   = RNSO* ATNRT/ ATN if (ATN > 0.0) else 0.0
+        RNTLV   = RNSO* ATNLV/ ATN if (ATN != 0.0) else 0.0
+        RNTST   = RNSO* ATNST/ ATN if (ATN != 0.0) else 0.0
+        RNTRT   = RNSO* ATNRT/ ATN if (ATN != 0.0) else 0.0
 
         # compute the partitioning of the total N uptake rate (NUPTR) over the leaves, stem and roots.
         RNULV, RNUST, RNURT = self.N_uptakeRates(NDEMLV, NDEMST, NDEMRT, NUPTR, NDEMTO)
